@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="form-signin" action="{% url 'desenvolvedor_update' %}" method="post">
+        <h2 class="form-signin-heading">Editar</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Atualizar" class="btn btn-primary btn-lg btn-block"/>
+        <a href="{% url 'desenvolvedor_delete' %}" class="btn btn-danger btn-lg btn-block">Apagar</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="form-signin" action="{% url 'desenvolvedor_create' %}" method="post">
+        <h2 class="form-signin-heading">Registrar</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Criar" class="btn btn-primary btn-lg btn-block"/>
+    </form>
+{% endblock %}
