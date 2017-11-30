@@ -13,17 +13,17 @@
 
 <header>
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'desenvolvedor_index' %}">Projeto de Análise de Requisitos</a>
+                <a class="navbar-brand" href="{% url 'desenvolvedor_index' %}">Sistema Gerenciador de Análise de Requisitos</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {% if 'desenvolvedor_id' in request.session %}
                     <li>
-                        <a href="{% url 'desenvolvedor_edit' %}">Editar</a>
+                        <a href="{% url 'desenvolvedor_edit' %}">Editar conta</a>
                     </li>
                     <li>
-                        <a href="{% url 'desenvolvedor_logout' %}">Logout</a>
+                        <a href="{% url 'desenvolvedor_logout' %}">Sair</a>
                     </li>
                 {% else %}
                     <li>

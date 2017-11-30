@@ -8,4 +8,4 @@ from django.db import models
 
 class AnaliseDeRequisitos(models.Model):
     nome = models.CharField(max_length=255, null=False)
-    descricao = models.TextField(null=False)
+    descricao = models.TextField()

@@ -14,11 +14,10 @@ class Desenvolvedor(models.Model):
 
 
 class Equipe(models.Model):
-    dev_email = models.ForeignKey(Desenvolvedor, on_delete=models.CASCADE, related_name='projetos')
-    ar_id = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE,
-                              related_name='desenvolvedores')
+    desenvolvedor = models.ForeignKey(Desenvolvedor, on_delete=models.CASCADE, related_name='projetos')
+    analise_de_requisito = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE, related_name='desenvolvedores')
 
 
 class Atividades(models.Model):
-    dev_email = models.ForeignKey(Desenvolvedor, on_delete=models.CASCADE, related_name='requisitos')
-    req_id = models.ForeignKey('requisito.Requisito', on_delete=models.CASCADE, related_name='desenvolvedores')
+    desenvolvedor = models.ForeignKey(Desenvolvedor, on_delete=models.CASCADE, related_name='requisitos')
+    requisito = models.ForeignKey('requisito.Requisito', on_delete=models.CASCADE, related_name='desenvolvedores')

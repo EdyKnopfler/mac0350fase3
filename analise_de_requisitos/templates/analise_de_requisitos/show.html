@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ analise_de_requisito.nome }}</h2>
+    <p>{{ analise_de_requisito.descricao }}</p>
+    <a href="#" class="btn btn-link btn-sm">Editar Projeto</a>
+
+    <h3>Requisitos</h3>
+    <a href="#" class="btn btn-link btn-sm">Adicionar Requisito</a>
+    <ul>
+        <h4>TODO:</h4>
+        <li>Listar todos os requisitos pertencentes a a este projeto</li>
+        <li>Criar link para visualizar os detalhes de cada requisito</li>
+        <li>Criar link para criação de um requisito</li>
+    </ul>
+
+    <h3>Equipe</h3>
+    <a href="#" class="btn btn-link btn-sm">Adicionar membros ao Projeto</a>
+    <ul>
+        <h4>TODO:</h4>
+        <li>Listar todos os usuários que faz parte deste projeto</li>
+        <li>Criar link e página para adicionar membros ao projeto</li>
+    </ul>
+
+
+{% endblock %}

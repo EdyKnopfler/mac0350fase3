@@ -41,6 +41,8 @@ def login(request):
             'senha']:
             request.session['desenvolvedor_id'] = desenvolvedor_existente.id
             return redirect('ar_index')
+        else:
+            messages.warning(request, 'Email ou Senha inválidos. Verifique os dados e tente novamente')
     except Desenvolvedor.DoesNotExist:
         messages.warning(request, 'Desenvolvedor inexistente')
     return redirect('desenvolvedor_index')

@@ -2,19 +2,11 @@
 {% block content %}
     <h2>Análise de Requisitos</h2>
 
-    TODO:
-    <ul>
-        <li>
-            Mostrar todos os projetos onde o usuário faz participação
-        </li>
-        <li>
-            Criar link e página para criar um novo projeto
-        </li>
-        <li>
-            Criar link e página dos detalhes de um projeto
-        </li>
-        <li>
-            Criar link e página para adicionar membros ao projeto
-        </li>
-    </ul>
+    {% for projeto in todos_projetos %}
+        <ul>
+            <li><h4><a href="{% url 'ar_show' projeto.analise_de_requisito.id %}" >{{ projeto.analise_de_requisito.nome }}</a></h4></li>
+        </ul>
+    {% endfor %}
+
+    <a href="{% url 'ar_new' %}" class="btn btn-link btn-sm">Criar novo Projeto</a>
 {% endblock %}
