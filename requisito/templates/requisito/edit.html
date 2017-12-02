@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="form-group" action="{% url 'requisito_update' %}" method="post">
+        <h2 class="form-signin-heading">Editar Requisito</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Atualizar" class="btn btn-primary"/>
+        <a href="{% url 'requisito_delete' %}" class="btn btn-danger">Apagar</a>
+    </form>
+{% endblock %}

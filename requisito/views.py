@@ -9,6 +9,12 @@ from django.contrib import messages
 
 # Create your views here.
 
+def show(request, requisito_id):
+    request.session['requisito_id'] = requisito_id
+    requisito = Requisito.objects.get(id=requisito_id)
+    return render(request, 'requisito/show.html', {'requisito': requisito})
+
+
 def new(request):
     form = RequisitoForm()
     return render(request, 'requisito/new.html', {'form': form})
@@ -25,3 +31,28 @@ def create(request):
     else:
         messages.warning(request, 'Formulário inválido')
     return redirect('ar_show', request.session['ar_id'])
+
+
+def edit(request):
+    antigo_requisito = Requisito.objects.get(id=request.session['requisito_id'])
+    form = RequisitoForm(instance=antigo_requisito)
+    return render(request, 'requisito/edit.html', {'form': form})
+
+
+def update(request):
+    antigo_requisito = Requisito.objects.get(id=request.session['requisito_id'])
+    requisito_atualizado = RequisitoForm(request.POST, instance=antigo_requisito)
+    if requisito_atualizado.is_valid():
+        requisito_atualizado.save()
+        messages.success(request, 'Requisito atualizado com sucesso')
+    else:
+        messages.warning(request, 'Falha na atualização do Requisito')
+    return redirect('requisito_show', request.session['requisito_id'])
+
+
+def delete(request):
+    Requisito.objects.get(id=request.session['requisito_id']).delete()
+    del request.session['requisito_id']
+    messages.success(request, 'Requisito apagado com sucesso')
+    return redirect('ar_show', request.session['ar_id'])
+

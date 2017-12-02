@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ requisito.nome }}</h2>
+    <p>{{ requisito.detalhes }}</p>
+    <a href="{% url 'requisito_edit' %}" class="btn btn-primary btn-sm">Editar Requisito</a>
+{% endblock %}

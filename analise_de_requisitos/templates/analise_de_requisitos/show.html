@@ -8,7 +8,7 @@
     <ul>
         {% for requisito in requisitos %}
             <li>
-                <h5>{{ requisito.nome }}
+                <h5><a href="{% url 'requisito_show' requisito.id %}">{{ requisito.nome }}</a>
                     <small><b>tipo: </b>{{ requisito.tipo }}</small>
                 </h5>
             </li>

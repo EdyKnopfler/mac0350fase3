@@ -63,7 +63,7 @@ def update(request):
         messages.success(request, 'Projeto atualizado com sucesso')
         return redirect('ar_show', request.session['ar_id'])
     else:
-        messages.warning(request, 'Formulário inválido')
+        messages.warning(request, 'Falha na atualização do Projeto')
         return redirect('ar_edit')
 
 
@@ -98,5 +98,5 @@ def add_dev(request, dev_id):
     projeto_atual = AnaliseDeRequisitos.objects.get(id=request.session['ar_id'])
     novo_desenvolvedor = Desenvolvedor.objects.get(id=dev_id)
     Equipe(dev_id=novo_desenvolvedor, ar_id=projeto_atual).save()
-    messages.success(request, 'Desenvolvedor adicionado ao projeto com sucesso')
+    messages.success(request, 'Desenvolvedor adicionado ao Projeto com sucesso')
     return redirect('ar_show', request.session['ar_id'])
