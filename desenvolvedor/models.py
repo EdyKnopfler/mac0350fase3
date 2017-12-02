@@ -15,7 +15,8 @@ class Desenvolvedor(models.Model):
 
 class Equipe(models.Model):
     dev_id = models.ForeignKey(Desenvolvedor, on_delete=models.CASCADE, related_name='projetos')
-    ar_id = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE, related_name='desenvolvedores')
+    ar_id = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE,
+                              related_name='desenvolvedores')
 
 
 class Atividades(models.Model):

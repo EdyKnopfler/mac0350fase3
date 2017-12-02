@@ -4,7 +4,7 @@
 
     {% for projeto in todos_projetos %}
         <ul>
-            <li><h4><a href="{% url 'ar_show' projeto.ar_id.id %}" >{{ projeto.ar_id.nome }}</a></h4></li>
+            <li><h4><a href="{% url 'ar_show' projeto.ar_id.id %}">{{ projeto.ar_id.nome }}</a></h4></li>
         </ul>
     {% endfor %}
 

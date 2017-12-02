@@ -5,21 +5,24 @@
     <a href="{% url 'ar_edit' %}" class="btn btn-primary btn-sm">Editar Projeto</a>
 
     <h3>Requisitos</h3>
-    <a href="#" class="btn btn-primary btn-sm">Adicionar Requisito</a>
     <ul>
         <h4>TODO:</h4>
         <li>Listar todos os requisitos pertencentes a a este projeto</li>
         <li>Criar link para visualizar os detalhes de cada requisito</li>
         <li>Criar link para criação de um requisito</li>
     </ul>
+    <a href="#" class="btn btn-primary btn-sm">Adicionar Requisito</a>
 
     <h3>Equipe</h3>
-    <a href="#" class="btn btn-primary btn-sm">Adicionar membros ao Projeto</a>
-    <ul>
-        <h4>TODO:</h4>
-        <li>Listar todos os usuários que faz parte deste projeto</li>
-        <li>Criar link e página para adicionar membros ao projeto</li>
-    </ul>
 
-
+    {% for relacao in equipe %}
+        <ul>
+            <li>
+                <h4>{{ relacao.dev_id.nome }}
+                    <small><i>{{ relacao.dev_id.email }}</i></small>
+                    <a href="{% url 'ar_remove_dev' relacao.dev_id.id %}" class="btn btn-link">Remover</a></h4>
+            </li>
+        </ul>
+    {% endfor %}
+    <a href="{% url 'ar_select_dev' %}" class="btn btn-primary btn-sm">Adicionar membros ao Projeto</a>
 {% endblock %}

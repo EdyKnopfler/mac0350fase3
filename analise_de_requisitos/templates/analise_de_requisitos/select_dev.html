@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Adicione um Desenvolvedor ao Projeto</h2>
+
+    {% for desenvolvedor in outros_desenvolvedores %}
+        <ul>
+            <li>
+                <h4>{{ desenvolvedor.nome }}
+                    <small><i>{{ desenvolvedor.email }}</i></small>
+                    <a href="{% url 'ar_add_dev' desenvolvedor.id %}" class="btn btn-link">Adicionar</a></h4>
+            </li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}
