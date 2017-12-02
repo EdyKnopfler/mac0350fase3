@@ -1,6 +1,5 @@
 from django.conf.urls import url
 from django.contrib import admin
-
 from analise_de_requisitos import views
 
 urlpatterns = [

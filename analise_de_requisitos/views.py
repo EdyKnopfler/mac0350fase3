@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from desenvolvedor.models import Desenvolvedor, Equipe
 from analise_de_requisitos.models import AnaliseDeRequisitos
+from requisito.models import Requisito
 from .forms import AnaliseDeRequisitosForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -24,9 +25,10 @@ def index(request):
 def show(request, ar_id):
     request.session['ar_id'] = ar_id
     analise_de_requisito = AnaliseDeRequisitos.objects.get(id=ar_id)
+    requisitos = Requisito.objects.filter(ar_id=analise_de_requisito)
     equipe = analise_de_requisito.desenvolvedores.all()
     return render(request, 'analise_de_requisitos/show.html',
-                  {'analise_de_requisito': analise_de_requisito, 'equipe': equipe})
+                  {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos, 'equipe': equipe})
 
 
 def new(request):
@@ -40,8 +42,7 @@ def create(request):
         novo_projeto = AnaliseDeRequisitos(nome=request.POST['nome'], descricao=request.POST['descricao'])
         novo_projeto.save()
         desenvolvedor_atual = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
-        nova_equipe = Equipe(dev_id=desenvolvedor_atual, ar_id=novo_projeto)
-        nova_equipe.save()
+        Equipe(dev_id=desenvolvedor_atual, ar_id=novo_projeto).save()
         messages.success(request, 'Projeto criado com sucesso')
     else:
         messages.warning(request, 'Falha na criação do Projeto')
@@ -67,16 +68,14 @@ def update(request):
 
 
 def delete(request):
-    projeto_atual = AnaliseDeRequisitos.objects.get(id=request.session['ar_id'])
-    projeto_atual.delete()
+    AnaliseDeRequisitos.objects.get(id=request.session['ar_id']).delete()
     del request.session['ar_id']
     messages.success(request, 'Projeto apagado com sucesso')
     return redirect('ar_index')
 
 
 def remove_dev(request, dev_id):
-    relacao = Equipe.objects.get(dev_id=dev_id, ar_id=request.session['ar_id'])
-    relacao.delete()
+    Equipe.objects.get(dev_id=dev_id, ar_id=request.session['ar_id']).delete()
     messages.success(request, 'Desenvolvedor removido do Projeto com sucesso')
     if int(dev_id) == request.session['desenvolvedor_id']:
         del request.session['ar_id']
@@ -98,7 +97,6 @@ def select_dev(request):
 def add_dev(request, dev_id):
     projeto_atual = AnaliseDeRequisitos.objects.get(id=request.session['ar_id'])
     novo_desenvolvedor = Desenvolvedor.objects.get(id=dev_id)
-    equipe_atualizada = Equipe(dev_id=novo_desenvolvedor, ar_id=projeto_atual)
-    equipe_atualizada.save()
+    Equipe(dev_id=novo_desenvolvedor, ar_id=projeto_atual).save()
     messages.success(request, 'Desenvolvedor adicionado ao projeto com sucesso')
     return redirect('ar_show', request.session['ar_id'])

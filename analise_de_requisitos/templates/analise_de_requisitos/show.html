@@ -6,23 +6,26 @@
 
     <h3>Requisitos</h3>
     <ul>
-        <h4>TODO:</h4>
-        <li>Listar todos os requisitos pertencentes a a este projeto</li>
-        <li>Criar link para visualizar os detalhes de cada requisito</li>
-        <li>Criar link para criação de um requisito</li>
+        {% for requisito in requisitos %}
+            <li>
+                <h5>{{ requisito.nome }}
+                    <small><b>tipo: </b>{{ requisito.tipo }}</small>
+                </h5>
+            </li>
+        {% endfor %}
     </ul>
-    <a href="#" class="btn btn-primary btn-sm">Adicionar Requisito</a>
+    <a href="{% url 'requisito_new' %}" class="btn btn-primary btn-sm">Adicionar Requisito</a>
 
     <h3>Equipe</h3>
-
-    {% for relacao in equipe %}
-        <ul>
+    <ul>
+        {% for relacao in equipe %}
             <li>
-                <h4>{{ relacao.dev_id.nome }}
+                <h5>{{ relacao.dev_id.nome }}
                     <small><i>{{ relacao.dev_id.email }}</i></small>
-                    <a href="{% url 'ar_remove_dev' relacao.dev_id.id %}" class="btn btn-link">Remover</a></h4>
+                    <a href="{% url 'ar_remove_dev' relacao.dev_id.id %}" class="btn btn-link btn-sm">Remover</a>
+                </h5>
             </li>
-        </ul>
-    {% endfor %}
+        {% endfor %}
+    </ul>
     <a href="{% url 'ar_select_dev' %}" class="btn btn-primary btn-sm">Adicionar membros ao Projeto</a>
 {% endblock %}
