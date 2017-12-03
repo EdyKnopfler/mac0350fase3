@@ -2,8 +2,6 @@ from django.conf.urls import url
 from django.contrib import admin
 from requisito import views
 
-from requisito import views
-
 urlpatterns = [
     url(r'^show/(?P<requisito_id>\d+)$', views.show, name='requisito_show'),
     url(r'^new/$', views.new, name='requisito_new'),

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="form-group" action="{% url 'atividade_create' %}" method="post">
+        <h2 class="form-signin-heading">Criar uma nova Atividade</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Criar Atividade" class="btn btn-primary"/>
+    </form>
+{% endblock %}

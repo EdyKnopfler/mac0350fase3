@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'desenvolvedor',
     'analise_de_requisitos',
-    'requisito'
+    'requisito',
+    'atividade'
 ]
 
 MIDDLEWARE = [

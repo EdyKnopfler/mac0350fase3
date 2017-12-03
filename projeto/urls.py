@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('desenvolvedor.urls')),
     url(r'^analise_de_requisitos/', include('analise_de_requisitos.urls')),
-    url(r'^requisito/', include('requisito.urls'))
+    url(r'^requisito/', include('requisito.urls')),
+    url(r'^atividade/', include('atividade.urls'))
 ]

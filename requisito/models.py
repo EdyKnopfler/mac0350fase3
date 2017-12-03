@@ -12,3 +12,4 @@ class Requisito(models.Model):
     nome = models.CharField(max_length=255, null=False)
     detalhes = models.TextField(null=True, blank=True)
     ar_id = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE)
+
