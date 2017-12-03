@@ -5,7 +5,7 @@
 
     {% for projeto in todos_projetos %}
         <ul>
-            <li><h4><a href="{% url 'ar_show' projeto.ar_id.id %}">{{ projeto.ar_id.nome }}</a></h4></li>
+            <li><h4><a href="{% url 'ar_show' projeto.0 %}">{{ projeto.1 }}</a></h4></li>
         </ul>
     {% endfor %}
 
@@ -15,8 +15,8 @@
 
     {% for atividade in todas_atividades %}
         <ul>
-            <li><h4><a href="{% url 'atividade_show' atividade.id %}">{{ atividade.descricao }}</a></h4>
-                (Prazo: {{ atividade.prazo }})</li>
+            <li><h4><a href="{% url 'atividade_show' atividade.0 %}">{{ atividade.1 }}</a></h4>
+                (Prazo: {{ atividade.2 }})</li>
         </ul>
     {% endfor %}
 
