@@ -72,9 +72,10 @@ user = argv[1]
 password = argv[2]
 
 try:
-    conn = psycopg2.connect("dbname='analise_requisitos' user={} host='localhost' password={}".format(user, password)) 
+    conn = psycopg2.connect("dbname='database' user={} host='localhost' password={}".format(user, password)) 
 except:
     print("ERRO: não foi possível conectar ao banco de dados.")
+    exit(0)
 
 cur = conn.cursor()
 
