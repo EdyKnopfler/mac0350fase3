@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.db import connection

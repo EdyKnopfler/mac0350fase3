@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'database',
-        'USER': 'mac0350',
-        'PASSWORD': 'mac0350',
+        'NAME': 'akumaex',
+        'USER': 'akumaex',
+        'PASSWORD': '02Ja1980',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

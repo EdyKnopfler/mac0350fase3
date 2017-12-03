@@ -72,6 +72,9 @@ def delete(request):
 
 
 def remove_dev(request, dev_id):
+    if possui_atividade(request, dev_id):
+        messages.warning(request, 'O Desenvolvedor ainda possui atividades pendentes a este Projeto')
+        return redirect('ar_show', request.session['ar_id'])
     Equipe.objects.get(dev_id=dev_id, ar_id=request.session['ar_id']).delete()
     messages.success(request, 'Desenvolvedor removido do Projeto com sucesso')
     if int(dev_id) == request.session['desenvolvedor_id']:
@@ -97,3 +100,12 @@ def add_dev(request, dev_id):
     Equipe(dev_id=novo_desenvolvedor, ar_id=projeto_atual).save()
     messages.success(request, 'Desenvolvedor adicionado ao Projeto com sucesso')
     return redirect('ar_show', request.session['ar_id'])
+
+
+def possui_atividade(request, dev_id):
+    atividades = Atividade.objects.filter(dev_id=dev_id)
+    for atividade in atividades:
+        if atividade.req_id.ar_id.id == int(request.session['ar_id']):
+            return True
+    return False
+
