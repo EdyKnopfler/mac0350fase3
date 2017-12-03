@@ -27,8 +27,14 @@ def show(request, ar_id):
     analise_de_requisito = AnaliseDeRequisitos.objects.get(id=ar_id)
     requisitos = Requisito.objects.filter(ar_id=analise_de_requisito)
     equipe = analise_de_requisito.desenvolvedores.all()
-    return render(request, 'analise_de_requisitos/show.html',
+    r = render(request, 'analise_de_requisitos/show.html',
                   {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos, 'equipe': equipe})
+    
+    print("\n\nQUERIES")
+    from django.db import connection
+    print(connection.queries)
+    
+    return r             
 
 
 def new(request):
