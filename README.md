@@ -26,3 +26,7 @@ DATABASES = {
 3. Criar as tabelas geradas pelo Django:
 
 $ python3 manage.py migrate
+
+4. Povoar banco de dados
+
+$ python3 povoar_bd.py usuário senha
