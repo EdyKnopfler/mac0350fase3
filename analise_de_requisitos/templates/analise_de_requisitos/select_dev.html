@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
         <li class="active">Novo Membro</li>
     </ul>
-    <h2>Adicione um Desenvolvedor ao Projeto</h2>
 
-    {% for desenvolvedor in outros_desenvolvedores %}
-        <ul>
-            <li>
-                <h4>{{ desenvolvedor.nome }}
-                    <small><i>{{ desenvolvedor.email }}</i></small>
-                    <a href="{% url 'ar_add_dev' desenvolvedor.id %}" class="btn btn-link">Adicionar</a></h4>
-            </li>
-        </ul>
-    {% endfor %}
-
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Adicionar Desenvolvedor ao Projeto</strong></div>
+        <table class="table table-hover">
+            {% for desenvolvedor in outros_desenvolvedores %}
+                <tr>
+                    <td>{{ desenvolvedor.nome }}<a href="{% url 'ar_add_dev' desenvolvedor.id %}" class="btn btn-link btn-sm">Adicionar</a>
+                    </td>
+                    <td>
+                        <small><b>email: </b>{{ desenvolvedor.email }}</small>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

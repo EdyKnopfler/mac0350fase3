@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
         <li><a href="{% url 'requisito_show' request.session.requisito_id %}">Requisito</a></li>
         <li class="active">Editar Requisito</li>
     </ul>
-    <form class="form-group" action="{% url 'requisito_update' %}" method="post">
-        <h2 class="form-signin-heading">Editar Requisito</h2>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Atualizar" class="btn btn-primary"/>
-        <a href="{% url 'requisito_delete' %}" class="btn btn-danger">Apagar</a>
-    </form>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Editar Requisito</strong></div>
+        <div class="panel-body">
+            <form class="form-group" action="{% url 'requisito_update' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Atualizar" class="btn btn-link btn-sm"/>
+                <a href="{% url 'requisito_delete' %}" class="btn btn-danger btn-sm">Apagar</a>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
