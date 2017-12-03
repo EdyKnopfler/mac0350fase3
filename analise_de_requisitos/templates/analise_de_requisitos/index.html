@@ -10,4 +10,15 @@
     {% endfor %}
 
     <a href="{% url 'ar_new' %}" class="btn btn-primary btn-sm">Criar novo Projeto</a>
+
+    <h2>Minhas Atividades</h2>
+
+    {% for atividade in todas_atividades %}
+        <ul>
+            <li><h4><a href="{% url 'atividade_show' atividade.id %}">{{ atividade.descricao }}</a></h4>
+                (Prazo: {{ atividade.prazo }})</li>
+        </ul>
+    {% endfor %}
+
+    <a href="{% url 'ar_new' %}" class="btn btn-primary btn-sm">Criar novo Projeto</a>
 {% endblock %}

@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from desenvolvedor.models import Desenvolvedor
 from analise_de_requisitos.models import AnaliseDeRequisitos, Equipe
+from atividade.models import Atividade
 from requisito.models import Requisito
 from .forms import AnaliseDeRequisitosForm
 from django.shortcuts import render, redirect
@@ -10,10 +11,12 @@ from django.contrib import messages
 
 def index(request):
     try:
-        desenvolvedor = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
+        desenvolvedor_id = request.session['desenvolvedor_id']
+        desenvolvedor = Desenvolvedor.objects.get(id=desenvolvedor_id)
         todos_projetos = desenvolvedor.projetos.all
+        todas_atividades = Atividade.objects.filter(dev_id=desenvolvedor_id)
         return render(request, 'analise_de_requisitos/index.html',
-                      {'desenvolvedor': desenvolvedor, 'todos_projetos': todos_projetos})
+                      {'desenvolvedor': desenvolvedor, 'todos_projetos': todos_projetos, 'todas_atividades': todas_atividades})
     except KeyError:
         messages.warning(request, 'Desenvolvedor não logado')
         return redirect('desenvolvedor_index')
@@ -26,12 +29,12 @@ def show(request, ar_id):
     equipe = analise_de_requisito.desenvolvedores.all()
     r = render(request, 'analise_de_requisitos/show.html',
                   {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos, 'equipe': equipe})
-    
+
     print("\n\nQUERIES")
     from django.db import connection
     print(connection.queries)
-    
-    return r             
+
+    return r
 
 
 def new(request):
