@@ -9,3 +9,5 @@ class Desenvolvedor(models.Model):
     email = models.CharField(max_length=255, null=False, unique=True)
     senha = models.CharField(max_length=255, null=False)
 
+    class Meta:
+        db_table = 'desenvolvedor'

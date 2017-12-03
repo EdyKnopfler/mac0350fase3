@@ -12,3 +12,5 @@ class Atividade(models.Model):
     data_fim = models.DateField(null=True, blank=True)
     prazo = models.DateField(null=True, blank=True)
 
+    class Meta:
+        db_table = 'atividade'

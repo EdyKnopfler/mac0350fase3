@@ -13,3 +13,5 @@ class Requisito(models.Model):
     detalhes = models.TextField(null=True, blank=True)
     ar_id = models.ForeignKey('analise_de_requisitos.AnaliseDeRequisitos', on_delete=models.CASCADE)
 
+    class Meta:
+        db_table = 'requisito'
