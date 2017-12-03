@@ -8,7 +8,7 @@ class Atividade(models.Model):
     dev_id = models.ForeignKey('desenvolvedor.Desenvolvedor', on_delete=models.CASCADE, related_name='requisitos')
     req_id = models.ForeignKey('requisito.Requisito', on_delete=models.CASCADE, related_name='desenvolvedores')
     descricao = models.TextField()
-    data_inicio = models.CharField(max_length=255, null=True, blank=True)
-    data_fim = models.CharField(max_length=255, null=True, blank=True)
-    prazo = models.CharField(max_length=255, null=True, blank=True)
+    data_inicio = models.DateField(null=True, blank=True)
+    data_fim = models.DateField(null=True, blank=True)
+    prazo = models.DateField(null=True, blank=True)
 

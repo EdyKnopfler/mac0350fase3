@@ -1,21 +1,16 @@
+from django.contrib import messages
+from django.shortcuts import redirect
+
 def autenticacao_middleware(get_response):
-    # One-time configuration and initialization.
 
     def middleware(request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
-        print("\n\n\nREQUEST")
-        print(request)
-
+        if not (request.path == '/' or request.path == '/login/' or \
+                request.path == '/new/' or request.path == '/create/') and \
+           not 'desenvolvedor_id' in request.session:
+            messages.warning(request, 'Por favor, faça login.')
+            return redirect('/')
+            
         response = get_response(request)
-
-        # Code to be executed for each request/response after
-        # the view is called.
-
-        print("\n\n\nRESPONSE")
-        print(request)
-
-
         return response
 
     return middleware
