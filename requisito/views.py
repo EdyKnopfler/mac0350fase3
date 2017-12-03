@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from analise_de_requisitos.models import AnaliseDeRequisitos
+from atividade.models import Atividade
 from requisito.models import Requisito
 from requisito.forms import RequisitoForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
 
-# Create your views here.
-
 def show(request, requisito_id):
     request.session['requisito_id'] = requisito_id
     requisito = Requisito.objects.get(id=requisito_id)
-    return render(request, 'requisito/show.html', {'requisito': requisito})
+    atividades = Atividade.objects.filter(req_id=requisito)
+    return render(request, 'requisito/show.html', {'requisito': requisito, 'atividades': atividades})
 
 
 def new(request):
@@ -55,4 +55,3 @@ def delete(request):
     del request.session['requisito_id']
     messages.success(request, 'Requisito apagado com sucesso')
     return redirect('ar_show', request.session['ar_id'])
-

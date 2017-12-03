@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'autenticacao',
     'desenvolvedor',
     'analise_de_requisitos',
-    'requisito'
+    'requisito',
+    'atividade'
 ]
 
 MIDDLEWARE = [

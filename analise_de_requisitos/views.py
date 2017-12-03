@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from desenvolvedor.models import Desenvolvedor, Equipe
-from analise_de_requisitos.models import AnaliseDeRequisitos
+from desenvolvedor.models import Desenvolvedor
+from analise_de_requisitos.models import AnaliseDeRequisitos, Equipe
 from requisito.models import Requisito
 from .forms import AnaliseDeRequisitosForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
-
-# Create your views here.
 
 
 def index(request):

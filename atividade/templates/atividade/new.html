@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
+        <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
+        <li><a href="{% url 'requisito_show' request.session.requisito_id %}">Requisito</a></li>
+        <li class="active">Nova Atividade</li>
+    </ul>
+    <form class="form-group" action="{% url 'atividade_create' %}" method="post">
+        <h2 class="form-signin-heading">Criar uma nova Atividade</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Criar Atividade" class="btn btn-primary"/>
+    </form>
+{% endblock %}
