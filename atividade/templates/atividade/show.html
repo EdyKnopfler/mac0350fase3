@@ -2,7 +2,7 @@
 {% block content %}
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
-        <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
+        <li><a href="{% url 'ar_show' atividade.req_id.ar_id.id %}">Projeto</a></li>
         <li><a href="{% url 'requisito_show' atividade.req_id.id %}">Requisito</a></li>
         <li class="active">Atividade</li>
     </ul>

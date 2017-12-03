@@ -15,8 +15,8 @@
 
     {% for atividade in todas_atividades %}
         <ul>
-            <li><h4><a href="{% url 'atividade_show' atividade.0 %}">{{ atividade.1 }}</a></h4>
-                (Prazo: {{ atividade.2 }})</li>
+            <li><bit><a href="{% url 'atividade_show' atividade.0 %}">{{ atividade.1 }}</a></big>
+                (Prazo: {{ atividade.2 | date:"d/m/Y" }})</li>
         </ul>
     {% endfor %}
 
