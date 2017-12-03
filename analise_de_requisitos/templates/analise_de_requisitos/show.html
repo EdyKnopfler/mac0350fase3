@@ -24,9 +24,9 @@
     <ul>
         {% for relacao in equipe %}
             <li>
-                <h5>{{ relacao.dev_id.nome }}
-                    <small><i>{{ relacao.dev_id.email }}</i></small>
-                    <a href="{% url 'ar_remove_dev' relacao.dev_id.id %}" class="btn btn-link btn-sm">Remover</a>
+                <h5>{{ relacao.1 }}
+                    <small><i>{{ relacao.2 }}</i></small>
+                    <a href="{% url 'ar_remove_dev' relacao.0 %}" class="btn btn-link btn-sm">Remover</a>
                 </h5>
             </li>
         {% endfor %}

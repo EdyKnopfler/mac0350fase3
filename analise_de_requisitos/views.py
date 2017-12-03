@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from analise_de_requisitos.sql import sql
+
 from desenvolvedor.models import Desenvolvedor
 from analise_de_requisitos.models import AnaliseDeRequisitos, Equipe
 from atividade.models import Atividade
@@ -7,25 +10,28 @@ from requisito.models import Requisito
 from .forms import AnaliseDeRequisitosForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.db import transaction
 
 
 def index(request):
     desenvolvedor_id = request.session['desenvolvedor_id']
-    desenvolvedor = Desenvolvedor.objects.get(id=desenvolvedor_id)
-    todos_projetos = desenvolvedor.projetos.all
-    todas_atividades = Atividade.objects.filter(dev_id=desenvolvedor_id)
-    return render(request, 'analise_de_requisitos/index.html',
-                  {'desenvolvedor': desenvolvedor, 'todos_projetos': todos_projetos, 
-                   'todas_atividades': todas_atividades})
+    sql.projetos_desenvolvedor(desenvolvedor_id)
+    sql.atividades_desenvolvedor(desenvolvedor_id)
+    resposta = render(request, 'analise_de_requisitos/index.html',
+                      {'todos_projetos': sql.cursor_projetos, 
+                       'todas_atividades': sql.cursor_atividades})
+    return resposta
 
 
 def show(request, ar_id):
     request.session['ar_id'] = ar_id
     analise_de_requisito = AnaliseDeRequisitos.objects.get(id=ar_id)
     requisitos = Requisito.objects.filter(ar_id=analise_de_requisito)
-    equipe = analise_de_requisito.desenvolvedores.all()
+    #equipe = analise_de_requisito.desenvolvedores.all()
+    sql.desenvolvedores_projeto(ar_id)
     return render(request, 'analise_de_requisitos/show.html',
-                  {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos, 'equipe': equipe})
+                  {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos,
+                   'equipe': sql.cursor_desenvolvedores})
 
 
 def new(request):
@@ -36,10 +42,10 @@ def new(request):
 def create(request):
     form = AnaliseDeRequisitosForm(request.POST)
     if form.is_valid():
-        novo_projeto = AnaliseDeRequisitos(nome=request.POST['nome'], descricao=request.POST['descricao'])
-        novo_projeto.save()
-        desenvolvedor_atual = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
-        Equipe(dev_id=desenvolvedor_atual, ar_id=novo_projeto).save()
+        with transaction.atomic():
+            novo_projeto = AnaliseDeRequisitos(nome=request.POST['nome'], descricao=request.POST['descricao'])
+            novo_projeto.save()
+            Equipe(dev_id_id=request.session['desenvolvedor_id'], ar_id_id=novo_projeto.id).save()
         messages.success(request, 'Projeto criado com sucesso')
     else:
         messages.warning(request, 'Falha na criação do Projeto')
