@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.db import connection
 
 def autenticacao_middleware(get_response):
 
@@ -11,6 +12,16 @@ def autenticacao_middleware(get_response):
             return redirect('/')
             
         response = get_response(request)
+        return response
+
+    return middleware
+
+def consultas_middleware(get_response):
+
+    def middleware(request):
+        response = get_response(request)
+        print("\n\nQUERIES")
+        print(connection.queries)
         return response
 
     return middleware

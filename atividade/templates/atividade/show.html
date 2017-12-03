@@ -3,7 +3,7 @@
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
-        <li><a href="{% url 'requisito_show' request.session.requisito_id %}">Requisito</a></li>
+        <li><a href="{% url 'requisito_show' atividade.req_id.id %}">Requisito</a></li>
         <li class="active">Atividade</li>
     </ul>
     <h2>Descrição</h2>
@@ -22,9 +22,6 @@
         <li>{{ atividade.prazo }}</li>
     </ul>
 
-    <a href="{% url 'requisito_show' atividade.req_id.id %}" class="btn btn-primary btn-sm">Voltar</a>
-
-    <h3>Responsável</h3>
 
     <ul>
         <li>
