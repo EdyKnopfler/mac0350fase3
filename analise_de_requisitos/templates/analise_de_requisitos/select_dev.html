@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
+        <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
+        <li class="active">Novo Membro</li>
+    </ul>
     <h2>Adicione um Desenvolvedor ao Projeto</h2>
 
     {% for desenvolvedor in outros_desenvolvedores %}

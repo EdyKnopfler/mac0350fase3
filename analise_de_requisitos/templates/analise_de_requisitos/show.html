@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
+        <li class="active">Projeto</li>
+    </ul>
     <h2>{{ analise_de_requisito.nome }}<a href="{% url 'ar_edit' %}" class="btn btn-link btn-sm">Editar Projeto</a></h2>
     <p>{{ analise_de_requisito.descricao }}</p>
 

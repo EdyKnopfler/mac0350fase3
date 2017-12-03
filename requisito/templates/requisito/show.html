@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
+        <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
+        <li class="active">Requisito</li>
+    </ul>
     <h2>{{ requisito.nome }}<a href="{% url 'requisito_edit' %}" class="btn btn-link btn-sm">Editar Requisito</a></h2>
     <p>{{ requisito.detalhes }}</p>
     <a href="{% url 'ar_show' requisito.ar_id.id %}" class="btn btn-primary btn-sm">Voltar</a>
