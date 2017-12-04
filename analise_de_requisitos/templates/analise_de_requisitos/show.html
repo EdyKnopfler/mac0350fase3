@@ -1,35 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li class="active">Projeto</li>
     </ul>
-    <h2>{{ analise_de_requisito.nome }}<a href="{% url 'ar_edit' %}" class="btn btn-link btn-sm">Editar Projeto</a></h2>
-    <p>{{ analise_de_requisito.descricao }}</p>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>{{ analise_de_requisito.nome }}</strong><a href="{% url 'ar_edit' %}"
+                                                                                      class="btn btn-link btn-sm">Editar
+            Projeto</a></div>
+        <div class="panel-body">{{ analise_de_requisito.descricao }}</div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Requisitos</strong><a href="{% url 'requisito_new' %}"
+                                                                 class="btn btn-link btn-sm">Criar novo Requisito</a>
+        </div>
+        <table class="table table-hover">
+            {% for requisito in requisitos %}
+                <tr>
+                    <td>
+                        <a href="{% url 'requisito_show' requisito.id %}">{{ requisito.nome }}</a>
 
 
-    <h3>Requisitos</h3>
-    <ul>
-        {% for requisito in requisitos %}
-            <li>
-                <h5><a href="{% url 'requisito_show' requisito.id %}">{{ requisito.nome }}</a>
-                    <small><b>tipo: </b>{{ requisito.tipo }}</small>
-                </h5>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'requisito_new' %}" class="btn btn-primary btn-sm">Adicionar Requisito</a>
+                    </td>
+                    <td>
+                        <small><b>tipo: </b>{{ requisito.tipo }}</small>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-    <h3>Equipe</h3>
-    <ul>
-        {% for relacao in equipe %}
-            <li>
-                <h5>{{ relacao.1 }}
-                    <small><i>{{ relacao.2 }}</i></small>
-                    <a href="{% url 'ar_remove_dev' relacao.0 %}" class="btn btn-link btn-sm">Remover</a>
-                </h5>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'ar_select_dev' %}" class="btn btn-primary btn-sm">Adicionar membros ao Projeto</a>
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Equipe</strong><a href="{% url 'ar_select_dev' %}"
+                                                             class="btn btn-link btn-sm">Adicionar Desenvolvedores</a>
+        </div>
+        <table class="table table-hover">
+            {% for relacao in equipe %}
+                <tr>
+                    <td>{{ relacao.1 }}<a href="{% url 'ar_remove_dev' relacao.0 %}"
+                                          class="btn btn-link btn-sm">Remover</a></td>
+                    <td>
+                        <small><b>email: </b>{{ relacao.2 }}</small>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li class="active">Novo Projeto</li>
     </ul>
-    <form class="form-group" action="{% url 'ar_create' %}" method="post">
-        <h2 class="form-signin-heading">Criar um novo Projeto</h2>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Criar" class="btn btn-primary"/>
-    </form>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Criar um novo Projeto</strong></div>
+        <div class="panel-body">
+            <form class="form-group" action="{% url 'ar_create' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Criar Projeto" class="btn btn-link btn-sm"/>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}

@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<form class="form-signin" action="{% url 'desenvolvedor_login' %}" method="post">
-    <h2 class="form-signin-heading">Login</h2>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Login</strong></div>
+    <div class="panel-body">
+        <form class="form-signin" action="{% url 'desenvolvedor_login' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block"/>
+    <input type="submit" value="Entrar" class="btn btn-link btn-sm"/>
 </form>
+    </div>
+    </div>
+
 {% endblock %}

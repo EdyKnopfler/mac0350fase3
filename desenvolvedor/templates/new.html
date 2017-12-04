@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form class="form-signin" action="{% url 'desenvolvedor_create' %}" method="post">
-        <h2 class="form-signin-heading">Registrar</h2>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Criar" class="btn btn-primary btn-lg btn-block"/>
-    </form>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Registrar conta</strong></div>
+        <div class="panel-body">
+            <form class="form-signin" action="{% url 'desenvolvedor_create' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Criar conta" class="btn btn-link btn sm"/>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}

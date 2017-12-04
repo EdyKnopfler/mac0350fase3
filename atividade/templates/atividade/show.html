@@ -1,31 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
         <li><a href="{% url 'ar_show' atividade.req_id.ar_id.id %}">Projeto</a></li>
         <li><a href="{% url 'requisito_show' atividade.req_id.id %}">Requisito</a></li>
         <li class="active">Atividade</li>
     </ul>
-    <h2>Descrição</h2>
-    <p>{{ atividade.descricao }}<a href="{% url 'atividade_edit' %}" class="btn btn-link btn-sm">Editar Atividade</a></p>
 
-    <table>
-        <tr>
-            <td><b>Data de Início:</b></td>
-            <td>{{ atividade.data_inicio | date:"d/m/Y" }}</td>
-        </tr>
-        <tr>
-            <td><b>Data de Entrega:</b></td>
-            <td>{{ atividade.data_fim | date:"d/m/Y" }}</td>
-        </tr>
-        <tr>
-            <td><b>Prazo:</b></td>
-            <td>{{ atividade.prazo | date:"d/m/Y" }}</td>
-        </tr>
-        <tr>
-            <td><b>Desenvolvedor:</b></td>
-            <td><big>{{ atividade.dev_id.nome }}</big> <small><i>{{ atividade.dev_id.email }}</i></small></td>
-        </tr>
-    </table>
-    
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Descrição da Atividade</strong><a href="{% url 'atividade_edit' %}"
+                                                                             class="btn btn-link btn-sm">Editar
+            Atividade</a></div>
+        <div class="panel-body">{{ atividade.descricao }}</div>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Data de Início</th>
+                <th>Data de Entrega</th>
+                <th>Prazo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ atividade.data_inicio }}</td>
+                <td>
+                    {{ atividade.data_fim }}
+                </td>
+                <td>
+                    {{ atividade.prazo }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Responsável</strong></div>
+        <table class="table table-hover">
+            <tr>
+                <td>{{ atividade.dev_id.nome }}</td>
+                <td>
+                    <small><b>email: </b>{{ atividade.dev_id.email }}</small>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 {% endblock %}
