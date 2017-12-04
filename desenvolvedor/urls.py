@@ -20,6 +20,7 @@ from desenvolvedor import views
 
 urlpatterns = [
     url(r'^$', views.index, name='desenvolvedor_index'),
+    url(r'^enter/$', views.enter, name='desenvolvedor_enter'),
     url(r'^login/$', views.login, name='desenvolvedor_login'),
     url(r'^logout/$', views.logout, name='desenvolvedor_logout'),
     url(r'^new/$', views.new, name='desenvolvedor_new'),

@@ -13,8 +13,12 @@ def index(request):
     if 'desenvolvedor_id' in request.session:
         return redirect('ar_index')
     else:
-        form = LoginForm()
-        return render(request, 'index.html', {'form': form})
+        return render(request, 'index.html')
+
+
+def enter(request):
+    form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
 def new(request):

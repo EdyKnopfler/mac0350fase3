@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Django default">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="akumaex">
+      <ObjectId>16386</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12441</ObjectId>
+    </database>
+    <role id="4" parent="1" name="akumaex">
+      <ObjectId>16384</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <ValidUntil>2018-01-01 02:00:00+00</ValidUntil>
+    </role>
+    <role id="5" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="7" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-12-04.09:04:55.879</IntrospectionTimestamp>
+      <IntrospectionStateNumber>827</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="8" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="information_schema">
+      <ObjectId>12153</ObjectId>
+    </schema>
+    <sequence id="13" parent="7" name="analise_de_requisitos_analisederequisitos_id_seq">
+      <ObjectId>25006</ObjectId>
+      <StateNumber>778</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="14" parent="7" name="analise_de_requisitos_equipe_id_seq">
+      <ObjectId>25151</ObjectId>
+      <StateNumber>798</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="15" parent="7" name="atividade_atividade_id_seq">
+      <ObjectId>25194</ObjectId>
+      <StateNumber>808</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="16" parent="7" name="desenvolvedor_desenvolvedor_id_seq">
+      <ObjectId>25042</ObjectId>
+      <StateNumber>786</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="17" parent="7" name="django_content_type_id_seq">
+      <ObjectId>25271</ObjectId>
+      <StateNumber>819</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="18" parent="7" name="django_migrations_id_seq">
+      <ObjectId>24995</ObjectId>
+      <StateNumber>777</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="19" parent="7" name="requisito_requisito_id_seq">
+      <ObjectId>25017</ObjectId>
+      <StateNumber>780</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="20" parent="7" name="analise_de_requisitos">
+      <ObjectId>25008</ObjectId>
+      <StateNumber>800</StateNumber>
+    </table>
+    <table id="21" parent="7" name="atividade">
+      <ObjectId>25196</ObjectId>
+      <StateNumber>817</StateNumber>
+    </table>
+    <table id="22" parent="7" name="desenvolvedor">
+      <ObjectId>25044</ObjectId>
+      <StateNumber>823</StateNumber>
+    </table>
+    <table id="23" parent="7" name="django_content_type">
+      <ObjectId>25273</ObjectId>
+      <StateNumber>819</StateNumber>
+    </table>
+    <table id="24" parent="7" name="django_migrations">
+      <ObjectId>24997</ObjectId>
+      <StateNumber>777</StateNumber>
+    </table>
+    <table id="25" parent="7" name="django_session">
+      <ObjectId>25281</ObjectId>
+      <StateNumber>827</StateNumber>
+    </table>
+    <table id="26" parent="7" name="equipe">
+      <ObjectId>25153</ObjectId>
+      <StateNumber>800</StateNumber>
+    </table>
+    <table id="27" parent="7" name="requisito">
+      <ObjectId>25019</ObjectId>
+      <StateNumber>825</StateNumber>
+    </table>
+    <column id="28" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>778</StateNumber>
+      <DefaultExpression>nextval(&apos;analise_de_requisitos_analisederequisitos_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>analise_de_requisitos_analisederequisitos_id_seq</SequenceName>
+    </column>
+    <column id="29" parent="20" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>778</StateNumber>
+    </column>
+    <column id="30" parent="20" name="descricao">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>778</StateNumber>
+    </column>
+    <index id="31" parent="20" name="analise_de_requisitos_analisederequisitos_pkey">
+      <ObjectId>25015</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="32" parent="20" name="analise_de_requisitos_analisederequisitos_pkey">
+      <ObjectId>25016</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>analise_de_requisitos_analisederequisitos_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>808</StateNumber>
+      <DefaultExpression>nextval(&apos;atividade_atividade_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>atividade_atividade_id_seq</SequenceName>
+    </column>
+    <column id="34" parent="21" name="descricao">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>808</StateNumber>
+    </column>
+    <column id="35" parent="21" name="data_inicio">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>814</StateNumber>
+    </column>
+    <column id="36" parent="21" name="data_fim">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>814</StateNumber>
+    </column>
+    <column id="37" parent="21" name="prazo">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>814</StateNumber>
+    </column>
+    <column id="38" parent="21" name="dev_id_id">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>808</StateNumber>
+    </column>
+    <column id="39" parent="21" name="req_id_id">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>808</StateNumber>
+    </column>
+    <index id="40" parent="21" name="atividade_atividade_pkey">
+      <ObjectId>25203</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="41" parent="21" name="atividade_atividade_dev_id_id_fa158693">
+      <ObjectId>25215</ObjectId>
+      <ColNames>dev_id_id</ColNames>
+    </index>
+    <index id="42" parent="21" name="atividade_atividade_req_id_id_e227d9a0">
+      <ObjectId>25216</ObjectId>
+      <ColNames>req_id_id</ColNames>
+    </index>
+    <key id="43" parent="21" name="atividade_atividade_pkey">
+      <ObjectId>25204</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>atividade_atividade_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="21" name="atividade_atividade_dev_id_id_fa158693_fk_desenvolv">
+      <ObjectId>25205</ObjectId>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <ColNames>dev_id_id</ColNames>
+      <RefTableId>25044</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>desenvolvedor</RefTableName>
+      <RefKeyName>desenvolvedor_desenvolvedor_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="45" parent="21" name="atividade_atividade_req_id_id_e227d9a0_fk_requisito">
+      <ObjectId>25210</ObjectId>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <ColNames>req_id_id</ColNames>
+      <RefTableId>25019</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>requisito</RefTableName>
+      <RefKeyName>requisito_requisito_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="46" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>786</StateNumber>
+      <DefaultExpression>nextval(&apos;desenvolvedor_desenvolvedor_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>desenvolvedor_desenvolvedor_id_seq</SequenceName>
+    </column>
+    <column id="47" parent="22" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>786</StateNumber>
+    </column>
+    <column id="48" parent="22" name="email">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>786</StateNumber>
+    </column>
+    <column id="49" parent="22" name="senha">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>786</StateNumber>
+    </column>
+    <index id="50" parent="22" name="desenvolvedor_desenvolvedor_pkey">
+      <ObjectId>25051</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="51" parent="22" name="desenvolvedor_desenvolvedor_email_fc003dcc_uniq">
+      <ObjectId>25085</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="52" parent="22" name="desenvolvedor_desenvolvedor_email_fc003dcc_like">
+      <ObjectId>25087</ObjectId>
+      <ColNames>email</ColNames>
+    </index>
+    <key id="53" parent="22" name="desenvolvedor_desenvolvedor_pkey">
+      <ObjectId>25052</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>desenvolvedor_desenvolvedor_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="54" parent="22" name="desenvolvedor_desenvolvedor_email_fc003dcc_uniq">
+      <ObjectId>25086</ObjectId>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>desenvolvedor_desenvolvedor_email_fc003dcc_uniq</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>819</StateNumber>
+      <DefaultExpression>nextval(&apos;django_content_type_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>django_content_type_id_seq</SequenceName>
+    </column>
+    <column id="56" parent="23" name="app_label">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>819</StateNumber>
+    </column>
+    <column id="57" parent="23" name="model">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>819</StateNumber>
+    </column>
+    <index id="58" parent="23" name="django_content_type_pkey">
+      <ObjectId>25277</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="59" parent="23" name="django_content_type_app_label_model_76bd3d3b_uniq">
+      <ObjectId>25279</ObjectId>
+      <ColNames>app_label
+model</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="23" name="django_content_type_pkey">
+      <ObjectId>25278</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>django_content_type_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="61" parent="23" name="django_content_type_app_label_model_76bd3d3b_uniq">
+      <ObjectId>25280</ObjectId>
+      <ColNames>app_label
+model</ColNames>
+      <UnderlyingIndexName>django_content_type_app_label_model_76bd3d3b_uniq</UnderlyingIndexName>
+    </key>
+    <column id="62" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>777</StateNumber>
+      <DefaultExpression>nextval(&apos;django_migrations_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>django_migrations_id_seq</SequenceName>
+    </column>
+    <column id="63" parent="24" name="app">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>777</StateNumber>
+    </column>
+    <column id="64" parent="24" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>777</StateNumber>
+    </column>
+    <column id="65" parent="24" name="applied">
+      <Position>4</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>777</StateNumber>
+    </column>
+    <index id="66" parent="24" name="django_migrations_pkey">
+      <ObjectId>25004</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="24" name="django_migrations_pkey">
+      <ObjectId>25005</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>django_migrations_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="68" parent="25" name="session_key">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>827</StateNumber>
+    </column>
+    <column id="69" parent="25" name="session_data">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>827</StateNumber>
+    </column>
+    <column id="70" parent="25" name="expire_date">
+      <Position>3</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>827</StateNumber>
+    </column>
+    <index id="71" parent="25" name="django_session_pkey">
+      <ObjectId>25287</ObjectId>
+      <ColNames>session_key</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="72" parent="25" name="django_session_session_key_c0390e0f_like">
+      <ObjectId>25289</ObjectId>
+      <ColNames>session_key</ColNames>
+    </index>
+    <index id="73" parent="25" name="django_session_expire_date_a5c62663">
+      <ObjectId>25290</ObjectId>
+      <ColNames>expire_date</ColNames>
+    </index>
+    <key id="74" parent="25" name="django_session_pkey">
+      <ObjectId>25288</ObjectId>
+      <ColNames>session_key</ColNames>
+      <UnderlyingIndexName>django_session_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>798</StateNumber>
+      <DefaultExpression>nextval(&apos;analise_de_requisitos_equipe_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>analise_de_requisitos_equipe_id_seq</SequenceName>
+    </column>
+    <column id="76" parent="26" name="ar_id_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>798</StateNumber>
+    </column>
+    <column id="77" parent="26" name="dev_id_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>798</StateNumber>
+    </column>
+    <index id="78" parent="26" name="analise_de_requisitos_equipe_pkey">
+      <ObjectId>25157</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="79" parent="26" name="analise_de_requisitos_equipe_ar_id_id_fa26c021">
+      <ObjectId>25169</ObjectId>
+      <ColNames>ar_id_id</ColNames>
+    </index>
+    <index id="80" parent="26" name="analise_de_requisitos_equipe_dev_id_id_137ec932">
+      <ObjectId>25170</ObjectId>
+      <ColNames>dev_id_id</ColNames>
+    </index>
+    <key id="81" parent="26" name="analise_de_requisitos_equipe_pkey">
+      <ObjectId>25158</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>analise_de_requisitos_equipe_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="26" name="analise_de_requisito_ar_id_id_fa26c021_fk_analise_d">
+      <ObjectId>25159</ObjectId>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <ColNames>ar_id_id</ColNames>
+      <RefTableId>25008</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>analise_de_requisitos</RefTableName>
+      <RefKeyName>analise_de_requisitos_analisederequisitos_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="83" parent="26" name="analise_de_requisito_dev_id_id_137ec932_fk_desenvolv">
+      <ObjectId>25164</ObjectId>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <ColNames>dev_id_id</ColNames>
+      <RefTableId>25044</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>desenvolvedor</RefTableName>
+      <RefKeyName>desenvolvedor_desenvolvedor_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="84" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>780</StateNumber>
+      <DefaultExpression>nextval(&apos;requisito_requisito_id_seq&apos;::regclass)</DefaultExpression>
+      <SequenceName>requisito_requisito_id_seq</SequenceName>
+    </column>
+    <column id="85" parent="27" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>780</StateNumber>
+    </column>
+    <column id="86" parent="27" name="tipo">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>780</StateNumber>
+    </column>
+    <column id="87" parent="27" name="detalhes">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <StateNumber>783</StateNumber>
+    </column>
+    <column id="88" parent="27" name="ar_id_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>780</StateNumber>
+    </column>
+    <index id="89" parent="27" name="requisito_requisito_pkey">
+      <ObjectId>25026</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="90" parent="27" name="requisito_requisito_ar_id_id_b22131a0">
+      <ObjectId>25033</ObjectId>
+      <ColNames>ar_id_id</ColNames>
+    </index>
+    <key id="91" parent="27" name="requisito_requisito_pkey">
+      <ObjectId>25027</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>requisito_requisito_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="92" parent="27" name="requisito_requisito_ar_id_id_b22131a0_fk_analise_d">
+      <ObjectId>25028</ObjectId>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <ColNames>ar_id_id</ColNames>
+      <RefTableId>25008</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>analise_de_requisitos</RefTableName>
+      <RefKeyName>analise_de_requisitos_analisederequisitos_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
