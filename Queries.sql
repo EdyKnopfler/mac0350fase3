@@ -179,6 +179,7 @@ INSERT INTO "atividade" ("dev_id_id", "req_id_id", "descricao", "data_inicio", "
 VALUES ($1, $2, $3, $4, $5, $6) RETURNING "atividade"."id";
 
 -- Formulário para editar atividade
+-- consulta em atividade/sql.py
 
 SELECT a.id, a.descricao, a.data_inicio, a.data_fim, a.prazo, a.req_id_id, r.ar_id_id
 FROM atividade a, requisito r
