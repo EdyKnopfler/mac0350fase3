@@ -1,5 +1,5 @@
 -- Consultas geradas pelo Django, exceto onde assinaladas
--- Parâmetros representados por $1, $2, ..., $n, que é a forma usada pelo cursor.prepare()
+-- Parâmetros representados por $1, $2, ..., $n
 
 -- Registro de desenvolvedor
 
@@ -180,14 +180,9 @@ VALUES ($1, $2, $3, $4, $5, $6) RETURNING "atividade"."id";
 
 -- Formulário para editar atividade
 
-SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao", 
-       "atividade"."data_inicio", "atividade"."data_fim", "atividade"."prazo" 
-FROM "atividade"
-WHERE "atividade"."id" = $1;
-
-SELECT "requisito"."id", "requisito"."tipo", "requisito"."nome", "requisito"."detalhes", "requisito"."ar_id_id" 
-FROM "requisito" 
-WHERE "requisito"."id" = $1;
+SELECT a.id, a.descricao, a.data_inicio, a.data_fim, a.prazo, a.req_id_id, r.ar_id_id
+FROM atividade a, requisito r
+WHERE a.req_id_id = r.id AND a.id = %s;
 
 -- Editar atividade
 

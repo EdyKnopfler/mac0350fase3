@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from atividade.sql import *
+
 from desenvolvedor.models import Desenvolvedor
 from requisito.models import Requisito
 from atividade.models import Atividade
@@ -34,9 +37,9 @@ def create(request):
 
 
 def edit(request):
-    antiga_atividade = Atividade.objects.get(id=request.session['atividade_id'])
-    form = AtividadeForm(instance=antiga_atividade)
-    return render(request, 'atividade/edit.html', {'form': form, 'atividade': antiga_atividade})
+    dados = atividade_join_requisito(request.session['atividade_id'])
+    form = AtividadeForm(dados)
+    return render(request, 'atividade/edit.html', {'form': form, 'dados': dados})
 
 
 def update(request):
