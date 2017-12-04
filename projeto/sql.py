@@ -1,8 +1,6 @@
-# BASEADO EM: http://initd.org/psycopg/articles/2012/10/01/prepared-statements-psycopg/
-
 from django.db import connection
 
-def preparar(nome, sql):
+def executar_consulta(consulta, params):
     cursor = connection.cursor()
-    cursor.execute('prepare ' + nome + ' as ' + sql + ';')
+    cursor.execute(consulta, params)
     return cursor

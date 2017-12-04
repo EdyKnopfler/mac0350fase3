@@ -9,26 +9,23 @@
     <h2>Descrição</h2>
     <p>{{ atividade.descricao }}<a href="{% url 'atividade_edit' %}" class="btn btn-link btn-sm">Editar Atividade</a></p>
 
-    <b>Data de Início:</b>
-    <ul>
-        <li>{{ atividade.data_inicio }}</li>
-    </ul>
-    <b>Data de Entrega:</b>
-    <ul>
-        <li>{{ atividade.data_fim }}</li>
-    </ul>
-    <b>Prazo:</b>
-    <ul>
-        <li>{{ atividade.prazo }}</li>
-    </ul>
-
-
-    <ul>
-        <li>
-            <h4>{{ atividade.dev_id.nome }}
-                <small><i>{{ atividade.dev_id.email }}</i></small>
-            </h4>
-        </li>
-    </ul>
-
+    <table>
+        <tr>
+            <td><b>Data de Início:</b></td>
+            <td>{{ atividade.data_inicio | date:"d/m/Y" }}</td>
+        </tr>
+        <tr>
+            <td><b>Data de Entrega:</b></td>
+            <td>{{ atividade.data_fim | date:"d/m/Y" }}</td>
+        </tr>
+        <tr>
+            <td><b>Prazo:</b></td>
+            <td>{{ atividade.prazo | date:"d/m/Y" }}</td>
+        </tr>
+        <tr>
+            <td><b>Desenvolvedor:</b></td>
+            <td><big>{{ atividade.dev_id.nome }}</big> <small><i>{{ atividade.dev_id.email }}</i></small></td>
+        </tr>
+    </table>
+    
 {% endblock %}

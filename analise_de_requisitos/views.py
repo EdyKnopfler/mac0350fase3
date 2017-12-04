@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from analise_de_requisitos.sql import sql
+from analise_de_requisitos.sql import *
 
 from desenvolvedor.models import Desenvolvedor
 from analise_de_requisitos.models import AnaliseDeRequisitos, Equipe
@@ -15,11 +15,13 @@ from django.db import transaction
 
 def index(request):
     desenvolvedor_id = request.session['desenvolvedor_id']
-    sql.projetos_desenvolvedor(desenvolvedor_id)
-    sql.atividades_desenvolvedor(desenvolvedor_id)
+    cursor_projetos = projetos_desenvolvedor(desenvolvedor_id)
+    cursor_atividades = atividades_desenvolvedor(desenvolvedor_id)
     resposta = render(request, 'analise_de_requisitos/index.html',
-                      {'todos_projetos': sql.cursor_projetos, 
-                       'todas_atividades': sql.cursor_atividades})
+                      {'todos_projetos': cursor_projetos, 
+                       'todas_atividades': cursor_atividades})
+    cursor_projetos.close()
+    cursor_atividades.close()
     return resposta
 
 
@@ -27,11 +29,12 @@ def show(request, ar_id):
     request.session['ar_id'] = ar_id
     analise_de_requisito = AnaliseDeRequisitos.objects.get(id=ar_id)
     requisitos = Requisito.objects.filter(ar_id=analise_de_requisito)
-    #equipe = analise_de_requisito.desenvolvedores.all()
-    sql.desenvolvedores_projeto(ar_id)
-    return render(request, 'analise_de_requisitos/show.html',
-                  {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos,
-                   'equipe': sql.cursor_desenvolvedores})
+    cursor_desenvolvedores = desenvolvedores_projeto(ar_id)
+    resposta = render(request, 'analise_de_requisitos/show.html',
+                      {'analise_de_requisito': analise_de_requisito, 'requisitos': requisitos,
+                       'equipe': cursor_desenvolvedores})
+    cursor_desenvolvedores.close()
+    return resposta
 
 
 def new(request):
