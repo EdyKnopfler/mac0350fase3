@@ -3,15 +3,9 @@
 
     <ul class="breadcrumb">
         <li><a href="{% url 'ar_index' %}">Página inicial</a></li>
-        {% if request.session.ar_id %}
-            <li><a href="{% url 'ar_show' request.session.ar_id %}">Projeto</a></li>
-        {% endif %}
-        {% if request.session.requisito_id %}
-            <li><a href="{% url 'requisito_show' request.session.requisito_id %}">Requisito</a></li>
-        {% endif %}
-        {% if request.session.atividade_id %}
-            <li><a href="{% url 'atividade_show' request.session.atividade_id %}">Atividade</a></li>
-        {% endif %}
+        <li><a href="{% url 'ar_show' atividade.req_id.ar_id_id %}">Projeto</a></li>
+        <li><a href="{% url 'requisito_show' atividade.req_id_id %}">Requisito</a></li>
+        <li><a href="{% url 'atividade_show' atividade.id %}">Atividade</a></li>
         <li class="active">Editar Atividade</li>
     </ul>
 

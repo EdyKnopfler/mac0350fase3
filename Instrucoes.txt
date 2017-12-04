@@ -4,10 +4,11 @@ createdb -U <usuario> -W analise_requisitos
 
 2. Rodar o script que cria e popula as tabelas:
 
-psql -U <usuario> -d analise_requisitos -a -f bd.sql
+psql -U <usuario> -d analise_requisitos -a -f BD.sql
 
-3. Atualizar o arquivo projeto/settings.py com os dados de conexão: usuário, senha, host, porta.
+3. Atualizar o arquivo mac0350fase3/projeto/settings.py com os dados de conexão: usuário, senha, host, porta.
 
 4. Subir o servidor:
 
+cd mac0350fase3
 python3 manage.py runserver

@@ -36,7 +36,7 @@ def create(request):
 def edit(request):
     antiga_atividade = Atividade.objects.get(id=request.session['atividade_id'])
     form = AtividadeForm(instance=antiga_atividade)
-    return render(request, 'atividade/edit.html', {'form': form})
+    return render(request, 'atividade/edit.html', {'form': form, 'atividade': antiga_atividade})
 
 
 def update(request):

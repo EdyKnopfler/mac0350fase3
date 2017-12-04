@@ -180,10 +180,14 @@ VALUES ($1, $2, $3, $4, $5, $6) RETURNING "atividade"."id";
 
 -- Formulário para editar atividade
 
-SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao",
+SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao", 
        "atividade"."data_inicio", "atividade"."data_fim", "atividade"."prazo" 
-FROM "atividade" 
+FROM "atividade"
 WHERE "atividade"."id" = $1;
+
+SELECT "requisito"."id", "requisito"."tipo", "requisito"."nome", "requisito"."detalhes", "requisito"."ar_id_id" 
+FROM "requisito" 
+WHERE "requisito"."id" = $1;
 
 -- Editar atividade
 
