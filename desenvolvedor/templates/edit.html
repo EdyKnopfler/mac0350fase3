@@ -7,7 +7,7 @@
             <form class="form-signin" action="{% url 'desenvolvedor_update' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Atualizar" class="btn btn-link"/>
+                <input type="submit" value="Atualizar" class="btn btn-primary"/>
                 <a href="{% url 'desenvolvedor_delete' %}" class="btn btn-danger">Apagar</a>
             </form>
         </div>

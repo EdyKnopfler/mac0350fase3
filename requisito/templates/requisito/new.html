@@ -13,7 +13,7 @@
             <form class="form-group" action="{% url 'requisito_create' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Criar Requisito" class="btn btn-link"/>
+                <input type="submit" value="Criar Requisito" class="btn btn-primary"/>
             </form>
         </div>
     </div>

@@ -7,7 +7,7 @@
             <form class="form-signin" action="{% url 'desenvolvedor_create' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Criar conta" class="btn btn-link"/>
+                <input type="submit" value="Criar conta" class="btn btn-primary"/>
             </form>
         </div>
     </div>

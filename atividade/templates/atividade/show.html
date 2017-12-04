@@ -24,12 +24,12 @@
             </thead>
             <tbody>
             <tr>
-                <td>{{ atividade.data_inicio }}</td>
+                <td>{{ atividade.data_inicio | date:"d/m/Y" }}</td>
                 <td>
-                    {{ atividade.data_fim }}
+                    {{ atividade.data_fim | date:"d/m/Y" }}
                 </td>
                 <td>
-                    {{ atividade.prazo }}
+                    {{ atividade.prazo | date:"d/m/Y" }}
                 </td>
             </tr>
             </tbody>

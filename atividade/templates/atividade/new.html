@@ -14,7 +14,7 @@
             <form class="form-group" action="{% url 'atividade_create' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Criar Atividade" class="btn btn-link"/>
+                <input type="submit" value="Criar Atividade" class="btn btn-primary"/>
             </form>
         </div>
     </div>
