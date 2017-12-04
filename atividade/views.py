@@ -22,25 +22,10 @@ def new(request):
 def create(request):
     form = AtividadeForm(request.POST)
     if form.is_valid():
-        if request.POST['data_inicio'].strip() == '':
-            data_inicio = None
-        else:
-            data_inicio = request.POST['data_inicio']
-            
-        if request.POST['data_fim'].strip() == '':
-            data_fim = None
-        else:
-            data_fim = request.POST['data_fim']
-            
-        if request.POST['prazo'].strip() == '':
-            prazo = None
-        else:
-            prazo = request.POST['prazo']
-            
-        desenvolvedor_atual = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
-        requisito_atual = Requisito.objects.get(id=request.session['requisito_id'])
-        Atividade(dev_id=desenvolvedor_atual, req_id=requisito_atual, descricao=request.POST['descricao'],
-                  data_inicio=data_inicio, data_fim=data_fim, prazo=prazo).save()
+        dados = form.cleaned_data
+        Atividade(dev_id_id=request.session['desenvolvedor_id'], req_id_id=request.session['requisito_id'],
+                  descricao=dados['descricao'],
+                  data_inicio=dados['data_inicio'], data_fim=dados['data_fim'], prazo=dados['prazo']).save()
         messages.success(request, 'Atividade criada com sucesso')
         return redirect('requisito_show', request.session['requisito_id'])
     else:

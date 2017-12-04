@@ -6,6 +6,7 @@ from requisito.models import Requisito
 from requisito.forms import RequisitoForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.db import transaction
 
 
 def show(request, requisito_id):
@@ -51,7 +52,8 @@ def update(request):
 
 
 def delete(request):
-    Requisito.objects.get(id=request.session['requisito_id']).delete()
+    with transaction.atomic():
+        Requisito.objects.get(id=request.session['requisito_id']).delete()
     del request.session['requisito_id']
     messages.success(request, 'Requisito apagado com sucesso')
     return redirect('ar_show', request.session['ar_id'])

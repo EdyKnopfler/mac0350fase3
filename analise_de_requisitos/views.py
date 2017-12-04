@@ -74,7 +74,8 @@ def update(request):
 
 
 def delete(request):
-    AnaliseDeRequisitos.objects.get(id=request.session['ar_id']).delete()
+    with transaction.atomic():
+        AnaliseDeRequisitos.objects.get(id=request.session['ar_id']).delete()
     del request.session['ar_id']
     messages.success(request, 'Projeto apagado com sucesso')
     return redirect('ar_index')
@@ -94,19 +95,13 @@ def remove_dev(request, dev_id):
 
 
 def select_dev(request):
-    projeto_atual = AnaliseDeRequisitos.objects.get(id=request.session['ar_id'])
-    equipe = projeto_atual.desenvolvedores.all()
-    equipe_ids = [desenvolvedor.dev_id.id for desenvolvedor in equipe]
+    equipe_ids = Equipe.objects.values_list('dev_id_id').filter(ar_id_id=request.session['ar_id'])
     outros_desenvolvedores = Desenvolvedor.objects.exclude(id__in=equipe_ids)
-    if outros_desenvolvedores.count() == 0:
-        messages.warning(request, 'Não há desenvolvedores disponíveis')
     return render(request, 'analise_de_requisitos/select_dev.html', {'outros_desenvolvedores': outros_desenvolvedores})
 
 
 def add_dev(request, dev_id):
-    projeto_atual = AnaliseDeRequisitos.objects.get(id=request.session['ar_id'])
-    novo_desenvolvedor = Desenvolvedor.objects.get(id=dev_id)
-    Equipe(dev_id=novo_desenvolvedor, ar_id=projeto_atual).save()
+    Equipe(dev_id_id=dev_id, ar_id_id=request.session['ar_id']).save()
     messages.success(request, 'Desenvolvedor adicionado ao Projeto com sucesso')
     return redirect('ar_show', request.session['ar_id'])
 

@@ -8,6 +8,12 @@ FROM "desenvolvedor"
 WHERE "desenvolvedor"."email" = $1 
 LIMIT 1;
 
+-- Login 
+
+SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
+FROM "desenvolvedor" 
+WHERE "desenvolvedor"."email" = $1;
+
 INSERT INTO "desenvolvedor" ("nome", "email", "senha") VALUES ($1, $2, $3) 
 RETURNING "desenvolvedor"."id";
 
@@ -39,12 +45,6 @@ WHERE "atividade"."dev_id_id" IN ($1);
 
 DELETE FROM "desenvolvedor" 
 WHERE "desenvolvedor"."id" IN ($1)
-
--- Login 
-
-SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
-FROM "desenvolvedor" 
-WHERE "desenvolvedor"."email" = $1;
 
 -- Formulário para editar a conta
 
@@ -175,33 +175,8 @@ DELETE FROM "requisito" WHERE "requisito"."id" IN ($1);
 
 -- Criando atividade
 
-SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
-FROM "desenvolvedor" WHERE "desenvolvedor"."id" = $1;
-
-SELECT "requisito"."id", "requisito"."tipo", "requisito"."nome", "requisito"."detalhes", "requisito"."ar_id_id" 
-FROM "requisito" 
-WHERE "requisito"."id" = $1;
-
 INSERT INTO "atividade" ("dev_id_id", "req_id_id", "descricao", "data_inicio", "data_fim", "prazo") 
-VALUES ($1, $2, $3, $4, $5, $6) 
-RETURNING "atividade"."id";
-
-SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao",
-       "atividade"."data_inicio", "atividade"."data_fim", "atividade"."prazo" 
-FROM "atividade" 
-WHERE "atividade"."id" = $1;
-
-SELECT "requisito"."id", "requisito"."tipo", "requisito"."nome", "requisito"."detalhes", "requisito"."ar_id_id" 
-FROM "requisito" 
-WHERE "requisito"."id" = $1;
-
-SELECT "analise_de_requisitos"."id", "analise_de_requisitos"."nome", "analise_de_requisitos"."descricao" 
-FROM "analise_de_requisitos" 
-WHERE "analise_de_requisitos"."id" = $1;
-
-SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
-FROM "desenvolvedor" 
-WHERE "desenvolvedor"."id" = $1;
+VALUES ($1, $2, $3, $4, $5, $6) RETURNING "atividade"."id";
 
 -- Formulário para editar atividade
 
@@ -224,52 +199,20 @@ WHERE "atividade"."id" = $7
 
 -- Apagar atividade
 
-SELECT "requisito"."id", "requisito"."tipo", "requisito"."nome", "requisito"."detalhes", "requisito"."ar_id_id"
-FROM "requisito" 
-WHERE "requisito"."id" = $1;
+SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao", "atividade"."data_inicio", "atividade"."data_fim", "atividade"."prazo" FROM "atividade" WHERE "atividade"."id" = $1;
 
-SELECT "analise_de_requisitos"."id", "analise_de_requisitos"."nome", "analise_de_requisitos"."descricao"
-FROM "analise_de_requisitos" 
-WHERE "analise_de_requisitos"."id" = $1;
-
-SELECT "atividade"."id", "atividade"."dev_id_id", "atividade"."req_id_id", "atividade"."descricao",
-       "atividade"."data_inicio", "atividade"."data_fim", "atividade"."prazo" 
-FROM "atividade" 
-WHERE "atividade"."req_id_id" = $1
+DELETE FROM "atividade" WHERE "atividade"."id" IN (1);
 
 -- Seleção de desenvolvedor para a equipe do projeto
 
-SELECT "analise_de_requisitos"."id", "analise_de_requisitos"."nome", "analise_de_requisitos"."descricao" 
-FROM "analise_de_requisitos" 
-WHERE "analise_de_requisitos"."id" = $1;
-
-SELECT "equipe"."id", "equipe"."dev_id_id", "equipe"."ar_id_id" 
-FROM "equipe" 
-WHERE "equipe"."ar_id_id" = $1;
-
 SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
 FROM "desenvolvedor" 
-WHERE "desenvolvedor"."id" = $1;
-
-SELECT COUNT(*) AS "__count" 
-FROM "desenvolvedor" 
-WHERE NOT ("desenvolvedor"."id" IN ($1));
-
-SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
-FROM "desenvolvedor" 
-WHERE NOT ("desenvolvedor"."id" IN ($1));
+WHERE NOT ("desenvolvedor"."id" IN (
+    SELECT U0."dev_id_id" AS Col1 FROM "equipe" U0 WHERE U0."ar_id_id" = $1));
 
 -- Adicionando desenvolvedor à equipe
 
-SELECT "analise_de_requisitos"."id", "analise_de_requisitos"."nome", "analise_de_requisitos"."descricao" 
-FROM "analise_de_requisitos" 
-WHERE "analise_de_requisitos"."id" = $1;
-
-SELECT "desenvolvedor"."id", "desenvolvedor"."nome", "desenvolvedor"."email", "desenvolvedor"."senha" 
-FROM "desenvolvedor" 
-WHERE "desenvolvedor"."id" = $1;
-
-INSERT INTO "equipe" ("dev_id_id", "ar_id_id") VALUES (2, 6) RETURNING "equipe"."id";
+INSERT INTO "equipe" ("dev_id_id", "ar_id_id") VALUES ($1, $2) RETURNING "equipe"."id";
 
 -- Removendo desenvolvedor da equipe
 

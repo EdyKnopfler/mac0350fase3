@@ -20,5 +20,12 @@
                 </tr>
             {% endfor %}
         </table>
+        
+        <script>
+            var tabela = document.querySelectorAll('table tr');
+            if (tabela.length == 0)
+                document.write('<div class="panel-body" style="background: white">Não há desenvolvedores disponíveis.</div>');
+        </script>
+        
     </div>
 {% endblock %}

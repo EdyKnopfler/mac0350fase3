@@ -4,6 +4,7 @@ from desenvolvedor.models import Desenvolvedor
 from .forms import RegistroForm, LoginForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.db import transaction
 
 
 # Create your views here.
@@ -76,7 +77,8 @@ def update(request):
 
 
 def delete(request):
-    desenvolvedor_atual = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
-    desenvolvedor_atual.delete()
-    messages.success(request, 'Desenvolvedor apagado com sucesso')
+    with transaction.atomic():
+        desenvolvedor_atual = Desenvolvedor.objects.get(id=request.session['desenvolvedor_id'])
+        desenvolvedor_atual.delete()
+        messages.success(request, 'Desenvolvedor apagado com sucesso')
     return redirect('desenvolvedor_logout')

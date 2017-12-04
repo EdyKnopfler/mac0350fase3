@@ -1,28 +1,13 @@
-1. Criar o banco de dados no PostgreSQL:
+1. Criar a base de dados:
 
--- OWNER = coloque o nome do seu usuário, sem aspas
+createdb -U <usuario> -W analise_requisitos
 
-CREATE DATABASE analise_requisitos
-  WITH OWNER = nome_do_usuario
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       LC_COLLATE = 'pt_BR.UTF-8'
-       LC_CTYPE = 'pt_BR.UTF-8'
-       CONNECTION LIMIT = -1;
-       
-2. Em mac0350fase3/projeto/settings.py, configurar o banco de dados:
+2. Rodar o script que cria e popula as tabelas:
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'analise_requisitos',
-        'USER': 'nome_do_usuario',
-        'PASSWORD': '........',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+psql -U <usuario> -d analise_requisitos -a -f bd.sql
 
-3. Criar as tabelas geradas pelo Django:
+3. Atualizar o arquivo projeto/settings.py com os dados de conexão: usuário, senha, host, porta.
 
-$ python3 manage.py migrate
+4. Subir o servidor:
+
+python3 manage.py runserver

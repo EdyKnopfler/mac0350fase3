@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'autenticacao.middleware.autenticacao_middleware',
+    'autenticacao.middleware.consultas_middleware',
 ]
 
 ROOT_URLCONF = 'projeto.urls'
@@ -63,7 +64,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                #'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'akumaex',
-        'USER': 'akumaex',
-        'PASSWORD': '02Ja1980',
+        'NAME': 'analise_requisitos',
+        'USER': 'ederson',
+        'PASSWORD': 'jethrotull',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
