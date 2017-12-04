@@ -4,7 +4,7 @@
 from sys import argv
 import psycopg2
 
-def povoar_desenvolvedor():
+def povoar_desenvolvedor(cur):
     #(nome, email, senha)
     desenvolvedores = [
         ('Rafael Alves Dias', 'rafaeldias@mac0350.com', 'Wj93279w%*9i'),
@@ -20,14 +20,14 @@ def povoar_desenvolvedor():
 
     cur.executemany("INSERT INTO desenvolvedor(nome, email, senha) VALUES (%s, %s, %s);", desenvolvedores)
 
-def povoar_ar():
+def povoar_ar(cur):
     #(nome, descricao)
     analise_requisitos = [
         ('Laboratório Santa Maria', 'Criação de um software de armazenamento e recuperação de dados de pacientes para o diagnóstico molecular.')]
 
     cur.executemany("INSERT INTO analise_de_requisitos(nome, descricao) VALUES (%s, %s);", analise_requisitos)
 
-def povoar_equipe():
+def povoar_equipe(cur):
     #(dev_id, ar_id)
     equipes = [
         ('2', '1'),
@@ -37,7 +37,7 @@ def povoar_equipe():
 
     cur.executemany("INSERT INTO equipe(dev_id_id, ar_id_id) VALUES (%s, %s);", equipes)
 
-def povoar_requisito():
+def povoar_requisito(cur):
     #(nome, tipo, detalhes, ar_id)
     requisitos = [
         ('Paciente', 'Dado', 'Todas as pessoas que são tratadas no laboratório devem possuir um cadastro, contendo: nome, data de nascimento, situação civil, RG, CPF, endereço, complemento, CEP, email, telefone.', '1'),
@@ -47,7 +47,7 @@ def povoar_requisito():
 
     cur.executemany("INSERT INTO requisito(nome, tipo, detalhes, ar_id_id) VALUES (%s, %s, %s, %s);", requisitos)
 
-def povoar_atividade():
+def povoar_atividade(cur):
     #(dev_id, req_id, descricao, dt_inicio, dt_fim, prazo)
     atividades = [
         ('2', '1', 'Implementação da tabela de paciente no banco de dados.', '2017-10-23', None, '2017-10-26'),
@@ -56,31 +56,52 @@ def povoar_atividade():
 
     cur.executemany("INSERT INTO atividade(dev_id_id, req_id_id, descricao, data_inicio, data_fim, prazo) VALUES (%s, %s, %s, %s, %s, %s);", atividades)
 
-def povoar_bd(conn):
-    povoar_desenvolvedor()
-    povoar_ar()
+def povoar_bd(conn, cur):
+    povoar_desenvolvedor(cur)
     conn.commit()
-    povoar_equipe()
-    povoar_requisito()
-    povoar_atividade()
 
-if (len(argv) < 2):
-    print("./povoar_bd.py usuário senha")
-    exit(0)
+    povoar_ar(cur)
+    conn.commit()
 
-user = argv[1]
-password = argv[2]
+    povoar_equipe(cur)
+    conn.commit()
 
-try:
-    conn = psycopg2.connect("dbname='database' user={} host='localhost' password={}".format(user, password)) 
-except:
-    print("ERRO: não foi possível conectar ao banco de dados.")
-    exit(0)
+    povoar_requisito(cur)
+    conn.commit()
 
-cur = conn.cursor()
+    povoar_atividade(cur)
+    conn.commit()
 
-povoar_bd(conn)
+def get_options(argv):
+    user = argv[1]
+    password = argv[2]
+    if (len(argv) > 3):
+        bdname = argv[3]
+    else:
+        bdname = 'analise_requisitos'
 
-cur.close()
-conn.commit()
-conn.close()
+    return (user, password, bdname)
+
+def main():
+    if (len(argv) < 2):
+        print("./povoar_bd.py usuário senha [nome_bd]")
+        print("\tnome_bd: opcional. (Default: analise_requisitos)")
+        exit(0)
+
+    user, password, dbname = get_options(argv)
+
+    try:
+        conn = psycopg2.connect("dbname={} user={} host='localhost' password={}".format(dbname, user, password)) 
+    except:
+        print("ERRO: não foi possível conectar ao banco de dados.")
+        exit(0)
+
+    cur = conn.cursor()
+
+    povoar_bd(conn, cur)
+
+    cur.close()
+    conn.close()
+
+if __name__ == '__main__':
+    main()
